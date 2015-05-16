@@ -204,7 +204,7 @@ void NewPing::timer_setup() {
 }
 
 void NewPing::call_user_func() {
-	if (!_user_func) {
+	if (_user_func) {
 		_user_func(_current_instance);
 	}
 }
