@@ -116,7 +116,8 @@ void NewPing::ping_timer(void (*userFunc)(NewPing *)) {
 boolean NewPing::check_timer() {
 	if (micros() > _max_time) { // Outside the timeout limit.
 		timer_stop();           // Disable timer interrupt
-		return false;           // Cancel ping timer.
+		ping_result = NO_ECHO;
+		return true;           // Cancel ping timer.
 	}
 
 	if (!(*_echoInput & _echoBit)) { // Ping echo received.
